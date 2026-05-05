@@ -1,0 +1,32 @@
+<!-- UI Template -->
+<div class="form-group">
+    <form #formRef="ngForm" (ngSubmit)="onSubmit()">
+    <div #group="ngModelGroup" ngModelGroup=stockGroup>
+        <div class="stock-name">
+            <input type="text"  required
+             placeholder="Stock Name"
+              name="stockName"
+             [(ngModel)]="stock.name">
+        </div>
+        <div class="stock-code">
+            <input type="text"  name="code"
+            placeholder="Stock Code"
+            [(ngModel)]="stock.code">
+        </div>
+        <div class="stock-price">
+            <input type="number" name="price"
+             placeholder="Stock Price"
+            [(ngModel)]="stock.price">
+        </div> 
+        <button type="submit">Submit</button>
+        
+        <button (click)="loadStockFromServer()">
+            Simulate Stock Load from Server 
+        </button>
+
+         <button (click)="resetForm(formRef);resetGroup(group)">
+            Reset Form
+        </button> 
+        </div>
+    </form>
+</div>
