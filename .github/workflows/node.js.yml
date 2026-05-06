@@ -17,12 +17,15 @@ jobs:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:   
+    - name: My Location
+      run : echo '${{runner.workspace}}'
+  
     - uses: actions/checkout@v4
     
     - name: Restore Project Packages     
       run: npm install
 
-    - name: Get typescript Artifact     
+    - name: Get typescript package     
       run: npm install -g typescript
 
     - name: Get Angular CLI     
