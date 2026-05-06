@@ -49,10 +49,22 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: archive.zip
-        
-    - name: GH Release
-      uses: softprops/action-gh-release@v0.1.15
+    - name: Extract artifacts
+      run: unzip archive.zip -d build_output
+    - name: Push Build to Another Repository
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        generate_release_notes: false
-        name: dev
+          # The folder where you unzipped the files
+          folder: build_output     
+          # The full name of the repo you are pushing to
+          repository-name: Madondnh/Project-Management-Tool_Release
+          
+          # The branch in the destination repo (e.g., 'main' or 'gh-pages')
+          branch: main 
+          
+          # Use a Personal Access Token (PAT) stored in your Secrets
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Set to true if you want to delete existing files in the 
+          # destination repo that aren't in the current build
+          clean: true
