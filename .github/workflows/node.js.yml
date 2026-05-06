@@ -19,7 +19,13 @@ jobs:
     steps:   
     - name: My Location
       run : echo '${{runner.workspace}}'
-  
+      
+    - name: My Location2 git
+      run :  ${{github.workspace}}
+     
+    - name: My Location Temp
+      run :  ${{runner.temp}}
+      
     - uses: actions/checkout@v4
     
     - name: Restore Project Packages     
@@ -38,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
        name: archive.zip
-       path: dist\PM_APP\browser
+       path: '${{github.workspace}}\dist\PM_APP\browser'
