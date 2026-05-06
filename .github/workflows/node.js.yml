@@ -17,8 +17,14 @@ jobs:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:    
-    - name: Checking Node Version    
-      run: npm --v
+    - name: Restore Project Packages     
+      run: npm install
       
-    - name: Final  Step
-      run: echo "Hello World"
+    - name: Build Angular Artifact     
+      run: ng build
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+       name: archive.zip
+       path: dist\PM_APP\browser
