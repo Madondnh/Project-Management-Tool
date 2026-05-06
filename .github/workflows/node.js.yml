@@ -21,6 +21,12 @@ jobs:
     
     - name: Restore Project Packages     
       run: npm install
+
+    - name: Get typescript Artifact     
+      run: npm install -g typescript
+
+    - name: Get Angular CLI     
+      run: npm install -g @angular/cli
       
     - name: Build Angular Artifact     
       run: ng build
