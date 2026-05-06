@@ -50,7 +50,7 @@ jobs:
       with:
         name: archive.zip
     - name: Extract artifacts
-      run: unzip archive.zip -d build_output
+      run: unzip '${{github.workspace}}/archive.zip' -d build_output
     - name: Push Build to Another Repository
       uses: JamesIves/github-pages-deploy-action@v4
       with:
