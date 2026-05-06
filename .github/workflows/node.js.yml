@@ -49,6 +49,10 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: archive.zip
+
+    - name: Display structure of downloaded files
+      run: ls -R
+    
     - name: Extract artifacts
       run: unzip '${{github.workspace}}/archive.zip' -d build_output
     - name: Push Build to Another Repository
