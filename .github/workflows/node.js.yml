@@ -49,12 +49,10 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: archive.zip
-
+        path: build_output
     - name: Display structure of downloaded files
       run: ls -R
     
-    - name: Extract artifacts
-      run: unzip '${{github.workspace}}/archive.zip' -d build_output
     - name: Push Build to Another Repository
       uses: JamesIves/github-pages-deploy-action@v4
       with:
