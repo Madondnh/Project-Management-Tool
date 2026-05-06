@@ -36,3 +36,23 @@ jobs:
       with:
        name: archive.zip
        path: dist/PM_APP/browser
+       
+  deploy-dev:
+    needs: [build]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:  
+      name: dev
+      url: https://github.com/Madondnh/Project-Management-Tool_Release
+    steps:
+    - name: Download candidate artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: archive.zip
+        
+    - name: GH Release
+      uses: softprops/action-gh-release@v0.1.15
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        generate_release_notes: false
+        name: dev
